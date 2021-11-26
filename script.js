@@ -2,7 +2,7 @@ const button = document.getElementById('criar-carta');
 const imput = document.getElementById('carta-texto');
 const father = document.getElementById('carta-gerada');
 const contador = document.getElementById('carta-contador');
-const palavraClicada = document.getElementsByTagName('span');
+const listaSpans = document.getElementsByTagName('span');
 
 const grupoEstilo = ['newspaper', 'magazine1', 'magazine2'];
 const grupoTamanho = ['medium', 'big', 'reallybig'];
@@ -64,9 +64,11 @@ function jogarDados() {
 }
 
 function inputRead() {
+  for (;listaSpans.length > 0;) {
+    father.removeChild(listaSpans[0]);
+  }
   const tirarEpaco = imput.value.trim();
   palavras = tirarEpaco.split(' ');
-
   const stringVazia = imput.value.replace(/\s/g, '');
 
   if (imput.value.length === 0 || stringVazia.length === 0) {
@@ -74,6 +76,7 @@ function inputRead() {
     alerta.innerText = 'Por favor, digite o conteúdo da carta.';
     alerta.id = 'carta-gerada';
     father.appendChild(alerta);
+    contador.innerText = 0;
   } else {
     contador.innerText = palavras.length;
     jogarDados();
