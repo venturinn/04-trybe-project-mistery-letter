@@ -1,5 +1,5 @@
 body {
-  background-color: black;
+  background-color: grey;
 }
 
 .newspaper {
@@ -17,7 +17,7 @@ body {
 }
 
 .magazine2 {
-  background-image: images/pink-pattern.png;
+  background-image: 'images/pink-pattern.png';
   color: fuchsia;
   font-family: Verdana;
   font-weight: 900;
@@ -39,18 +39,41 @@ body {
 }
 
 .rotateleft {
+  display: inline-block;
   transform: matrix(0.996195, -0.0871557, 0.0871557, 0.996195, 0, 0);
 }
 
 .rotateright {
+  display: inline-block;
   transform: matrix(0.996195, 0.0871557, -0.0871557, 0.996195, 0, 0);
 }
 
 .skewleft {
+  display: inline-block;
   transform: matrix(1, 0, 0.176327, 1, 0, 0);
 }
 
 .skewright {
+  display: inline-block;
   transform: skewX(-10deg);
 }
 
+#carta-texto {
+  text-align: center;
+  width: 600px;
+
+
+}
+
+#criar-carta {
+  border: none;
+  color: white;
+  background-color: black;
+  border-radius: 10px;
+  padding: 7px 20px;
+}
+
+#user {
+  margin-top: 100px;
+  text-align: center;
+}
