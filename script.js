@@ -13,18 +13,19 @@ let classesEscolhidas = [];
 let classesMisturadas = [];
 let palavras = [];
 let palavra;
+let elementoClicado;
 
 let dadosEstilo;
 let dadosTamanho;
 let dadosRotacao;
 let dadosInclinacao;
-let dadosOrdenClasse; // valor entre 0 e 3
-let dadosQuantidadeClasse;
+let dadosOrdenClasse;
+// let dadosQuantidadeClasse;
 
 function embaralharClassesEscolhidas() {
   classesMisturadas = [];
 
-  for (i = 0; i <= 3; i += 1) {
+  for (let i = 0; i <= 3; i += 1) {
     dadosOrdenClasse = Math.trunc(Math.random() * (4 - i));
     const classeRetirada = classesEscolhidas.splice(dadosOrdenClasse, 1);
 
@@ -41,7 +42,7 @@ function putClass() {
 
   embaralharClassesEscolhidas();
 
-  for (let i = 0; i <= dadosQuantidadeClasse; i += 1) { // dadosQuantidadeClasse entre 0 e 3
+  for (let i = 0; i <= 3; i += 1) { // dadosQuantidadeClasse entre 0 e 3
     palavra.classList.add(classesMisturadas[i]);
   }
   father.appendChild(palavra);
@@ -53,7 +54,7 @@ function jogarDados() {
     dadosTamanho = Math.trunc(Math.random() * 3);
     dadosRotacao = Math.trunc(Math.random() * 2);
     dadosInclinacao = Math.trunc(Math.random() * 2);
-    dadosQuantidadeClasse = Math.trunc(Math.random() * 4);
+    // dadosQuantidadeClasse = Math.trunc(Math.random() * 4);
     dadosOrdenClasse = Math.trunc(Math.random() * 4);
 
     palavra = document.createElement('span');
@@ -85,8 +86,36 @@ function inputRead() {
 
 button.addEventListener('click', inputRead);
 
-function mudarPalavra(event) {
+function gerarNovasClasses() {
+  dadosEstilo = Math.trunc(Math.random() * 3);
+  dadosTamanho = Math.trunc(Math.random() * 3);
+  dadosRotacao = Math.trunc(Math.random() * 2);
+  dadosInclinacao = Math.trunc(Math.random() * 2);
+  // dadosQuantidadeClasse = Math.trunc(Math.random() * 4);
+  dadosOrdenClasse = Math.trunc(Math.random() * 4);
 
+  classesEscolhidas = [];
+  classesEscolhidas.push(grupoEstilo[dadosEstilo]);
+  classesEscolhidas.push(grupoTamanho[dadosTamanho]);
+  classesEscolhidas.push(grupoRotacao[dadosRotacao]);
+  classesEscolhidas.push(grupoInclinacao[dadosInclinacao]);
+
+  embaralharClassesEscolhidas();
+
+  for (let i = 0; i <= 3; i += 1) {
+    elementoClicado.classList.add(classesMisturadas[i]);
+  }
 }
 
-document.addEventListener('click', mudarPalavra);
+function mudarPalavra(event) {
+  elementoClicado = event.target;
+
+  console.log(elementoClicado);
+
+  if (elementoClicado.tagName === 'SPAN') {
+    elementoClicado.className = '';
+    gerarNovasClasses();
+  }
+}
+
+father.addEventListener('click', mudarPalavra);
