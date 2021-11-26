@@ -9,8 +9,7 @@ const grupoInclinacao = ['skewleft', 'skewright'];
 
 let palavras = [];
 
-function inputRead() {
-  palavras = imput.value.split(' ');
+function creatCarta() {
   for (let i = 0; i < palavras.length; i += 1) {
     const dadosEstilo = Math.trunc(Math.random() * 4);
     const dadosTamanho = Math.trunc(Math.random() * 4);
@@ -28,9 +27,18 @@ function inputRead() {
   }
 }
 
+function inputRead() {
+  palavras = imput.value.split(' ');
+
+  let stringVazia = imput.value.replace(/\s/g, '');
+
+  if (imput.value.length === 0 || stringVazia.length === 0) {
+    alert('Por favor, digite o conteúdo da carta.');
+  } else {
+    creatCarta();
+  }
+}
+
 button.addEventListener('click', inputRead);
 
-//  - `newspaper`, `magazine1`, `magazine2` (Grupo estilo)
-//  - `medium`, `big`, `reallybig` (Grupo tamanho)
-//  - `rotateleft`, `rotateright` (Grupo rotação)
-//  - `skewleft`, `skewright` (Grupo inclinação)
+
