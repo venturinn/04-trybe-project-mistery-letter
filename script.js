@@ -20,7 +20,7 @@ let dadosTamanho;
 let dadosRotacao;
 let dadosInclinacao;
 let dadosOrdenClasse;
-// let dadosQuantidadeClasse;
+
 
 function embaralharClassesEscolhidas() {
   classesMisturadas = [];
@@ -42,7 +42,7 @@ function putClass() {
 
   embaralharClassesEscolhidas();
 
-  for (let i = 0; i <= 3; i += 1) { // dadosQuantidadeClasse entre 0 e 3
+  for (let i = 0; i <= 3; i += 1) { 
     palavra.classList.add(classesMisturadas[i]);
   }
   father.appendChild(palavra);
@@ -54,7 +54,6 @@ function jogarDados() {
     dadosTamanho = Math.trunc(Math.random() * 3);
     dadosRotacao = Math.trunc(Math.random() * 2);
     dadosInclinacao = Math.trunc(Math.random() * 2);
-    // dadosQuantidadeClasse = Math.trunc(Math.random() * 4);
     dadosOrdenClasse = Math.trunc(Math.random() * 4);
 
     palavra = document.createElement('span');
@@ -86,12 +85,13 @@ function inputRead() {
 
 button.addEventListener('click', inputRead);
 
+// Função para alterar as classes da plavavra clicada
+
 function gerarNovasClasses() {
   dadosEstilo = Math.trunc(Math.random() * 3);
   dadosTamanho = Math.trunc(Math.random() * 3);
   dadosRotacao = Math.trunc(Math.random() * 2);
   dadosInclinacao = Math.trunc(Math.random() * 2);
-  // dadosQuantidadeClasse = Math.trunc(Math.random() * 4);
   dadosOrdenClasse = Math.trunc(Math.random() * 4);
 
   classesEscolhidas = [];

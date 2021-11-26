@@ -17,9 +17,9 @@ body {
 }
 
 .magazine2 {
-  background-image: url("images/pink-pattern.png");
+  background-image: url('images/pink-pattern.png');
   color: fuchsia;
-  font-family: Verdana;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: 900;
 }
 
@@ -40,17 +40,17 @@ body {
 
 .rotateleft {
   display: inline-block;
-  transform: matrix(0.996195, -0.0871557, 0.0871557, 0.996195, 0, 0);
+  transform: matrix(0.996, -0.087, 0.087, 0.996, 0, 0);
 }
 
 .rotateright {
   display: inline-block;
-  transform: matrix(0.996195, 0.0871557, -0.0871557, 0.996195, 0, 0);
+  transform: matrix(0.996, 0.087, -0.087, 0.996, 0, 0);
 }
 
 .skewleft {
   display: inline-block;
-  transform: matrix(1, 0, 0.176327, 1, 0, 0);
+  transform: matrix(1, 0, 0.176, 1, 0, 0);
 }
 
 .skewright {
