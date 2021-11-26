@@ -2,6 +2,7 @@ const button = document.getElementById('criar-carta');
 const imput = document.getElementById('carta-texto');
 const father = document.getElementById('carta-gerada');
 const contador = document.getElementById('carta-contador');
+const palavraClicada = document.getElementsByTagName('span');
 
 const grupoEstilo = ['newspaper', 'magazine1', 'magazine2'];
 const grupoTamanho = ['medium', 'big', 'reallybig'];
@@ -20,11 +21,15 @@ let dadosInclinacao;
 let dadosOrdenClasse; // valor entre 0 e 3
 let dadosQuantidadeClasse;
 
+function embaralharClassesEscolhidas() {
+  classesMisturadas = [];
 
-function embaralharClassesEscolhidas(){
-   
+  for (i = 0; i <= 3; i += 1) {
+    dadosOrdenClasse = Math.trunc(Math.random() * (4 - i));
+    const classeRetirada = classesEscolhidas.splice(dadosOrdenClasse, 1);
 
-
+    classesMisturadas.push(classeRetirada[0]);
+  }
 }
 
 function putClass() {
@@ -36,13 +41,10 @@ function putClass() {
 
   embaralharClassesEscolhidas();
 
-  console.log(classesEscolhidas);
-
-  for (i = 0; i <= dadosQuantidadeClasse; i += 1) { // dadosQuantidadeClasse entre 0 e 3
-    palavra.classList.add(classesEscolhidas[i]);
+  for (let i = 0; i <= dadosQuantidadeClasse; i += 1) { // dadosQuantidadeClasse entre 0 e 3
+    palavra.classList.add(classesMisturadas[i]);
   }
   father.appendChild(palavra);
-  console.log(palavra.className);
 }
 
 function jogarDados() {
@@ -62,7 +64,8 @@ function jogarDados() {
 }
 
 function inputRead() {
-  palavras = imput.value.split(' ');
+  const tirarEpaco = imput.value.trim();
+  palavras = tirarEpaco.split(' ');
 
   const stringVazia = imput.value.replace(/\s/g, '');
 
@@ -72,9 +75,15 @@ function inputRead() {
     alerta.id = 'carta-gerada';
     father.appendChild(alerta);
   } else {
-    contador.innerText = palavras.length
+    contador.innerText = palavras.length;
     jogarDados();
   }
 }
 
 button.addEventListener('click', inputRead);
+
+function mudarPalavra(event) {
+
+}
+
+document.addEventListener('click', mudarPalavra);
