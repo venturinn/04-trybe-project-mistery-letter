@@ -21,6 +21,7 @@ let dadosRotacao;
 let dadosInclinacao;
 let dadosOrdenClasse;
 
+// Função sem relevância no algoritmo atual, mantenho aqui para fins de histórico e estudo da lógica desenvolvida.
 
 function embaralharClassesEscolhidas() {
   classesMisturadas = [];
@@ -33,6 +34,8 @@ function embaralharClassesEscolhidas() {
   }
 }
 
+// Função atribui as classes e cria os elementos <span>.
+
 function putClass() {
   classesEscolhidas = [];
   classesEscolhidas.push(grupoEstilo[dadosEstilo]);
@@ -42,11 +45,13 @@ function putClass() {
 
   embaralharClassesEscolhidas();
 
-  for (let i = 0; i <= 3; i += 1) { 
+  for (let i = 0; i <= 3; i += 1) {
     palavra.classList.add(classesMisturadas[i]);
   }
   father.appendChild(palavra);
 }
+
+// Função gera os números aleatórios que serão usados para atribuir as classes de forma aleatória para cada palavra digitada.
 
 function jogarDados() {
   for (let i = 0; i < palavras.length; i += 1) {
@@ -62,6 +67,8 @@ function jogarDados() {
     putClass();
   }
 }
+
+// Função zera o texto anterior, verifica e prepara o novo texto digitado e chama as funções para gerar a carta com classes aleatórias.
 
 function inputRead() {
   for (;listaSpans.length > 0;) {
@@ -85,7 +92,7 @@ function inputRead() {
 
 button.addEventListener('click', inputRead);
 
-// Função para alterar as classes da plavavra clicada
+// Funções para alterar as classes da plavavra clicada. Está repetindo partes do código. Necessário refatorar as funções!
 
 function gerarNovasClasses() {
   dadosEstilo = Math.trunc(Math.random() * 3);
